@@ -6,7 +6,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.TabHost;
 
-@SuppressWarnings("deprecation")
+//@SuppressWarnings("deprecation")
 public class HelloTabWidget extends TabActivity {
 
 	public void onCreate(Bundle savedInstanceState) {
