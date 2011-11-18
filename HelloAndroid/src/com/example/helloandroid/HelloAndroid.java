@@ -2,7 +2,6 @@ package com.example.helloandroid;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.TextView;
 
 /**
  * An Activity is a single application entity that is used to perform actions.
@@ -20,14 +19,14 @@ public class HelloAndroid extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		TextView tv = new TextView(this);
-		tv.setText("Hello, Android");
-		setContentView(tv);
+		setContentView(R.layout.main);
+		
+//		TextView tv = new TextView(this);
+//		tv.setText("Hello, Android");
+//		setContentView(tv);
 
 //		Object o = null;
 //		o.toString();
-
-		// setContentView(R.layout.main);
 	}
 
 }

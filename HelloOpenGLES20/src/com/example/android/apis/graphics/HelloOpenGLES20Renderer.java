@@ -10,7 +10,7 @@ import javax.microedition.khronos.opengles.GL10;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
-import android.os.SystemClock;
+//import android.os.SystemClock;
 
 public class HelloOpenGLES20Renderer implements GLSurfaceView.Renderer {
 
