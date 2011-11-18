@@ -11,7 +11,7 @@ import android.widget.TextView;
  * 
  * @see http://developer.android.com/resources/tutorials/hello-world.html
  */
-public class HelloAndroidActivity extends Activity {
+public class HelloAndroid extends Activity {
 
 	/**
 	 * Called when the activity is first created. It is where you should perform

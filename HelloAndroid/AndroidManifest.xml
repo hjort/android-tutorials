@@ -11,7 +11,7 @@
         android:label="@string/app_name" >
         <activity
             android:label="@string/app_name"
-            android:name=".HelloAndroidActivity" >
+            android:name=".HelloAndroid" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
 
