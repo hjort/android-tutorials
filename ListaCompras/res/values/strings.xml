@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Lista de Compras</string>
+    <string name="escolha_secao">Escolha a seção</string>
+    <string-array name="secoes">
+        <item>Limpeza</item>
+        <item>Higiene</item>
+        <item>Alimentos</item>
+        <item>Frutas e Verduras</item>
+        <item>Outros</item>
+    </string-array>
+
+</resources>
