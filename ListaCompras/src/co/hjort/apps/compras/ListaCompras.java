@@ -68,7 +68,11 @@ public class ListaCompras extends Activity {
 			public boolean onKey(View v, int keyCode, KeyEvent event) {
 				if ((event.getAction() == KeyEvent.ACTION_DOWN)
 						&& (keyCode == KeyEvent.KEYCODE_ENTER)) {
-					incluirProduto();
+					
+					String nome = produto.getText().toString();
+					if (nome != null && !"".equals(nome)) {
+						incluirProduto();
+					}
 					return true;
 				}
 				return false;
