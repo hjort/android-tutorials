@@ -1,7 +1,9 @@
 package co.hjort.apps.compras;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -26,6 +28,7 @@ public class ListaCompras extends Activity {
 	
 	private LinearLayout itens;
 	private LayoutInflater inflater;
+	private RemoverItemListener removerItemListener;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +77,7 @@ public class ListaCompras extends Activity {
 		
 		itens = (LinearLayout) findViewById(R.id.itens);
 		inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		removerItemListener = new RemoverItemListener(this);
 	}
 	
 	private void popularItens(int secao) {
@@ -86,18 +90,47 @@ public class ListaCompras extends Activity {
 			check.setId(ii);
 			button.setId(ii);
 			check.setText("Produto " + ((secao + 1) * 100 + (ii + 1)));
-			button.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					
-					// TODO: mostrar diálogo de confirmação
-					itens.removeViewAt(v.getId());
-					
-					Toast.makeText(getApplication(), String.valueOf(v.getId()),
-							Toast.LENGTH_LONG).show();
-				}
-			});
+			button.setOnClickListener(removerItemListener);
 			itens.addView(itemView);
+		}
+	}
+	
+	private class RemoverItemListener implements OnClickListener {
+
+		private Context context;
+		private boolean confirmed;
+
+		public RemoverItemListener(Context context) {
+			this.context = context;
+		}
+
+		@Override
+		public void onClick(View v) {
+			confirmed = false;
+			AlertDialog.Builder builder = new AlertDialog.Builder(context);
+			builder.setMessage("Deseja realmente remover?")
+					.setCancelable(false)
+					.setPositiveButton("Sim",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int id) {
+									confirmed = true;
+								}
+							})
+					.setNegativeButton("Não",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int id) {
+									dialog.cancel();
+								}
+							});
+			AlertDialog alert = builder.create();
+			alert.show();
+			
+			if (confirmed) {
+				itens.removeViewAt(v.getId());
+				Toast.makeText(getApplication(), String.valueOf(v.getId()),
+						Toast.LENGTH_LONG).show();
+			}
 		}
 	}
 	
