@@ -98,7 +98,6 @@ public class ListaCompras extends Activity {
 	private class RemoverItemListener implements OnClickListener {
 
 		private Context context;
-		private boolean confirmed;
 
 		public RemoverItemListener(Context context) {
 			this.context = context;
@@ -106,16 +105,11 @@ public class ListaCompras extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			confirmed = false;
+			ConfirmarRemoverItemListener confirmar = new ConfirmarRemoverItemListener(v);
 			AlertDialog.Builder builder = new AlertDialog.Builder(context);
-			builder.setMessage("Deseja realmente remover?")
+			builder.setMessage("Deseja mesmo remover?")
 					.setCancelable(false)
-					.setPositiveButton("Sim",
-							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog, int id) {
-									confirmed = true;
-								}
-							})
+					.setPositiveButton("Sim", confirmar)
 					.setNegativeButton("Não",
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,
@@ -125,13 +119,24 @@ public class ListaCompras extends Activity {
 							});
 			AlertDialog alert = builder.create();
 			alert.show();
-			
-			if (confirmed) {
-				itens.removeViewAt(v.getId());
-				Toast.makeText(getApplication(), String.valueOf(v.getId()),
-						Toast.LENGTH_LONG).show();
-			}
 		}
+	}
+	
+	private class ConfirmarRemoverItemListener implements DialogInterface.OnClickListener {
+
+		private View view;
+		
+		public ConfirmarRemoverItemListener(View view) {
+			this.view = view;
+		}
+
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			itens.removeViewAt(view.getId());
+			Toast.makeText(getApplication(), String.valueOf(view.getId()),
+					Toast.LENGTH_LONG).show();
+		}
+		
 	}
 	
 	private void incluirProduto() {
