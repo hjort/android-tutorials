@@ -9,48 +9,38 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:prompt="@string/escolha_secao" />
-    
-    <LinearLayout
-        android:id="@+id/linearLayout1"
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:orientation="vertical" >
+        android:layout_height="wrap_content" >
 
-        <CheckBox
-            android:id="@+id/checkBox1"
+        <EditText
+            android:id="@+id/produto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CheckBox" />
-        <CheckBox
-            android:id="@+id/checkBox1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CheckBox" />
-        <CheckBox
-            android:id="@+id/checkBox1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CheckBox" />
-        
-    </LinearLayout>
+            android:layout_toLeftOf="@+id/incluir"
+            android:background="@android:drawable/editbox_background" />
 
-	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent">
-	    <EditText
-	        android:id="@+id/produto"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:background="@android:drawable/editbox_background"/>
-	    <Button
-	        android:id="@+id/incluir"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_toRightOf="@id/produto"
-	        android:layout_alignParentRight="true"
-	        android:layout_marginLeft="10dip"
-	        android:text="Incluir" />
-	</RelativeLayout>
+        <Button
+            android:id="@+id/incluir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="incluir" />
+    </RelativeLayout>
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scroll"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:id="@+id/itens"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 
 </LinearLayout>
