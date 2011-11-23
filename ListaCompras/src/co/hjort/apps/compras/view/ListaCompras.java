@@ -124,9 +124,8 @@ public class ListaCompras extends Activity {
 			qtdeProdutos++;
 		}
 		
-		Toast.makeText(getApplication(),
-				"Quantidade de Produtos: " + qtdeProdutos, Toast.LENGTH_LONG)
-				.show();
+		final String msg = getString(R.string.quantidade_produtos, qtdeProdutos);
+		Toast.makeText(getApplication(), msg, Toast.LENGTH_LONG).show();
 	}
 	
 	private class RemoverItemListener implements OnClickListener {
@@ -136,7 +135,7 @@ public class ListaCompras extends Activity {
 			int id = view.getId();
 			if (dao.excluir(id)) {
 				itens.removeView(itens.findViewById(id));
-				Toast.makeText(getApplication(), "Produto removido da lista",
+				Toast.makeText(getApplication(), R.string.produto_removido,
 						Toast.LENGTH_SHORT).show();
 				qtdeProdutos--;
 			}
@@ -171,9 +170,7 @@ public class ListaCompras extends Activity {
 
 		itens.addView(viewItem);
 		
-		Toast.makeText(getApplication(),
-				"Incluído produto: " + nome,
-				Toast.LENGTH_SHORT).show();
+		Toast.makeText(getApplication(), R.string.incluido_produto, Toast.LENGTH_SHORT).show();
 		txtProduto.setText("");
 		txtProduto.requestFocus();
 	}

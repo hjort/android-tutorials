@@ -3,6 +3,13 @@
 
     <string name="app_name">Lista de Compras</string>
     <string name="escolha_secao">Escolha a seção</string>
+    <string name="remover_item">remover</string>
+    <string name="incluir_item">incluir</string>
+    
+    <string name="quantidade_produtos">Quantidade de produtos: %d</string>
+    <string name="produto_removido">Produto removido da lista</string>
+    <string name="incluido_produto">Incluído produto na lista</string>
+
     <string-array name="secoes">
         <item>Limpeza</item>
         <item>Higiene</item>
