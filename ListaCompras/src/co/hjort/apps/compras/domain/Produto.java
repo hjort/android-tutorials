@@ -1,4 +1,4 @@
-package co.hjort.apps.compras;
+package co.hjort.apps.compras.domain;
 
 public class Produto {
 

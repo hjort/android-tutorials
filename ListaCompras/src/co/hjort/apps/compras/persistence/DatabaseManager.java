@@ -1,4 +1,4 @@
-package co.hjort.apps.compras;
+package co.hjort.apps.compras.persistence;
 
 import android.content.Context;
 import android.database.SQLException;
@@ -6,15 +6,18 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+/**
+ * @see http://www.sqlite.org/datatype3.html
+ */
 public class DatabaseManager {
 
-	private static final String DATABASE_NAME = "data";
+	private static final String DATABASE_NAME = "compras.db";
 	private static final int DATABASE_VERSION = 1;
 
 	private static final String DATABASE_CREATE = "create table produtos ("
 			+ "_id integer primary key autoincrement, "
 			+ "nome text not null, " + "secao integer not null, "
-			+ "marcado boolean not null);";
+			+ "marcado integer not null);";
 
 	private final Context context;
 
@@ -22,8 +25,8 @@ public class DatabaseManager {
 	private DatabaseHelper helper;
 
 	/**
-	 * Constructor - takes the context to allow the database to be
-	 * opened/created
+	 * Constructor that takes the context to allow the database to be opened or
+	 * created.
 	 * 
 	 * @param context
 	 *            the Context within which to work
@@ -34,21 +37,13 @@ public class DatabaseManager {
 
 	private static class DatabaseHelper extends SQLiteOpenHelper {
 
-		private final Context context;
-		
 		DatabaseHelper(Context context) {
 			super(context, DATABASE_NAME, null, DATABASE_VERSION);
-			this.context = context;
 		}
 
 		@Override
 		public void onCreate(SQLiteDatabase db) {
 			db.execSQL(DATABASE_CREATE);
-			
-			ProdutoDAO dao = ProdutoDAO.getInstance(this.context);
-			for (int ii = 1; ii < 5; ii++) {
-				dao.incluir(ii, "produto " + ii);
-			}
 		}
 
 		@Override
@@ -59,6 +54,7 @@ public class DatabaseManager {
 			db.execSQL("DROP TABLE IF EXISTS produtos");
 			onCreate(db);
 		}
+		
 	}
 
 	/**
