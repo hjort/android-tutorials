@@ -78,11 +78,7 @@ public class ListaCompras extends Activity {
 			public boolean onKey(View v, int keyCode, KeyEvent event) {
 				if ((event.getAction() == KeyEvent.ACTION_DOWN)
 						&& (keyCode == KeyEvent.KEYCODE_ENTER)) {
-					
-					String nome = txtProduto.getText().toString();
-					if (nome != null && !"".equals(nome)) {
-						incluirProduto();
-					}
+					incluirProduto();
 					return true;
 				}
 				return false;
@@ -151,11 +147,14 @@ public class ListaCompras extends Activity {
 	}
 	
 	private void incluirProduto() {
+		String nome = txtProduto.getText().toString();
+		
+		if (nome == null || "".equals(nome))
+			return;
+		
 		View viewItem = inflater.inflate(R.layout.item, null);
 		CheckBox chkProduto = (CheckBox) viewItem.findViewById(R.id.item01);
 		Button btnRemover = (Button) viewItem.findViewById(R.id.remove01);
-		
-		String nome = txtProduto.getText().toString();
 		
 		int id = dao.incluir(codigoSecao, nome);
 
