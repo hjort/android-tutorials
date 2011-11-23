@@ -8,12 +8,14 @@
         android:id="@+id/item01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:text="@+id/item01" />
 
     <Button
         android:id="@+id/remove01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/remover_item" />
+        android:layout_marginRight="3dip"
+        android:background="@drawable/remove32" />
 
 </LinearLayout>
